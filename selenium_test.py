@@ -3,7 +3,6 @@ from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
 import time
 import logging
-import requests
 import os
 
 log_dir = "C:\\Users\\vishal\\PycharmProjects\\pythonProject"
@@ -23,17 +22,6 @@ username = ""  #fill your username
 password = ""  #fill your password
 
 url = "https://www.atg.party"
-res = requests.get(url)
-if res.status_code == 200:
-    logging.info(f"response code: {res.status_code}")
-else:
-    logging.info(f"invalid code: {res.status_code}")
-    driver.quit()
-
-start_time = time.time()
-driver.get(url)
-load_time = time.time() - start_time
-logging.info(f"load time : {load_time:.2f} sec")
 
 driver.find_element(By.CLASS_NAME, "login-link").click()
 logging.info("click login")
@@ -52,7 +40,7 @@ driver.find_element(By.CLASS_NAME, "ce-paragraph").send_keys("sample description
 logging.info("write description")
 driver.find_element(By.ID, "cover_image").send_keys("c:\\browserdrivers\\cover.jpg")
 logging.info("add cover image")
-time.sleep(7)
+time.sleep(4)
 logging.info("waiting for image to upload")
 driver.find_element(By.ID, "hpost_btn").click()
 logging.info("published the article")
